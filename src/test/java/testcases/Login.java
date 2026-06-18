@@ -6,16 +6,8 @@ import data.BaseTest;
 import data.LoginData;
 import org.junit.Test;
 import org.junit.Before;
-import org.junit.After;
-import org.testng.Assert;
-import static org.junit.Assert.assertEquals;
 import org.openqa.selenium.*;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
 import pages.LoginPage;
-import java.time.Duration;
 import java.util.*;
 
 

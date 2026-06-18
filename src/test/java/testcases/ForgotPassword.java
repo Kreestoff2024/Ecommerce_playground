@@ -1,18 +1,14 @@
 package testcases;
 
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.Before;
 import org.junit.After;
 import org.openqa.selenium.*;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
 import java.util.*;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 

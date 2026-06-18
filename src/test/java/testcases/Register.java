@@ -1,22 +1,13 @@
 package testcases;
 
-
 import utilis.Verify;
 import utilis.VerifyInDriver;
 import data.BaseTest;
 import data.RegisterData;
 import org.junit.Test;
 import org.junit.Before;
-import org.junit.After;
-import org.testng.Assert;
-import static org.junit.Assert.assertEquals;
 import org.openqa.selenium.*;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
 import pages.RegisterPage;
-import java.time.Duration;
 import java.util.*;
 
 public class Register extends  BaseTest {
@@ -48,4 +39,40 @@ public class Register extends  BaseTest {
         registerPage.fillForm(RegisterData.Empty.firstname, RegisterData.Correct.lastname, RegisterData.Correct.email, RegisterData.Correct.telephone, RegisterData.Correct.password, RegisterData.Correct.passwordConfirm);
         Verify.elementText(registerPage.getBlankFirstname(), registerPage.expectedMissingFirstname);
     }
+
+    @Test
+    public void emptyLastname() {
+        registerPage.navigateToPage();
+        registerPage.fillForm(RegisterData.Correct.firstname, RegisterData.Empty.lastname, RegisterData.Correct.email, RegisterData.Correct.telephone, RegisterData.Correct.password, RegisterData.Correct.passwordConfirm);
+        Verify.elementText(registerPage.getBlankLastname(),registerPage.expectedMissingLastname);
+    }
+
+    @Test
+    public void emptyEmail() {
+        registerPage.navigateToPage();
+        registerPage.fillForm(RegisterData.Correct.firstname, RegisterData.Correct.lastname, RegisterData.Empty.email, RegisterData.Correct.telephone, RegisterData.Correct.password, RegisterData.Correct.passwordConfirm);
+        Verify.elementText(registerPage.getBlankEmail(),registerPage.expectedMissingEmail);
+    }
+
+    @Test
+    public void emptyTelephone() {
+        registerPage.navigateToPage();
+        registerPage.fillForm(RegisterData.Correct.firstname, RegisterData.Correct.lastname, RegisterData.Correct.email, RegisterData.Empty.telephone, RegisterData.Correct.password, RegisterData.Correct.passwordConfirm);
+        Verify.elementText(registerPage.getBlankTelephone(),registerPage.expectedMissingTelephone);
+    }
+
+    @Test
+    public void emptyPassword() {
+        registerPage.navigateToPage();
+        registerPage.fillForm(RegisterData.Correct.firstname, RegisterData.Correct.lastname, RegisterData.Correct.email, RegisterData.Correct.telephone, RegisterData.Empty.password, RegisterData.Correct.passwordConfirm);
+        Verify.elementText(registerPage.getBlankPassword(),registerPage.expectedMissingPassword);
+    }
+
+    @Test
+    public void emptyConfirmPassword() {
+        registerPage.navigateToPage();
+        registerPage.fillForm(RegisterData.Correct.firstname, RegisterData.Correct.lastname, RegisterData.Correct.email, RegisterData.Correct.telephone, RegisterData.Correct.password, RegisterData.Empty.passwordConfirm);
+        Verify.elementText(registerPage.getBlankConfirmPassword(),registerPage.expectedMissingConfirmPassword);
+    }
+
 }

@@ -8,12 +8,11 @@ import org.openqa.selenium.WebElement;
 
 public class RegisterPage {
     private final WebDriver driver;
-    public static String url = Globals.BASE_URL;
+    public static String url = Globals.Register_URL;
     public RegisterPage(WebDriver driver) { this.driver = driver; }
 
     public void fillForm(String firstname, String lastname, String email, String telephone, String password, String passwordConfirm) {
-        getScrollingMenu().click();
-        getContinueButton().click();
+
         if (firstname != null) getFirstnameField().sendKeys(firstname);
         if (lastname != null) getLastnameField().sendKeys(lastname);
         if (email != null) getEmailField().sendKeys(email);
@@ -25,8 +24,6 @@ public class RegisterPage {
     }
 
     public void fillForm() {
-        getScrollingMenu().click();
-        getContinueButton().click();
         getFirstnameField().sendKeys(RegisterData.Correct.firstname);
         getLastnameField().sendKeys(RegisterData.Correct.lastname);
         getEmailField().sendKeys(RegisterData.Correct.email);
@@ -39,8 +36,6 @@ public class RegisterPage {
 
     public void navigateToPage(){ driver.navigate().to(url);}
 
-    private WebElement getScrollingMenu() {return driver.findElement(By.xpath("//*[@id=\"widget-navbar-217834\"]/ul/li[6]/a/div/span")); }
-    private WebElement getContinueButton() {return driver.findElement(By.xpath("//*[@id=\"content\"]/div/div[1]/div/div/a"));}
     private WebElement getFirstnameField() {return driver.findElement(By.id("input-firstname"));}
     private WebElement getLastnameField() {return driver.findElement(By.id("input-lastname"));}
     private WebElement getEmailField() {return driver.findElement(By.id("input-email"));}
@@ -55,4 +50,19 @@ public class RegisterPage {
 
     public WebElement getBlankFirstname() {return driver.findElement(By.xpath("//*[@id=\"account\"]/div[2]/div/div"));}
     public String expectedMissingFirstname = "First Name must be between 1 and 32 characters!";
+
+    public WebElement getBlankLastname()  {return driver.findElement(By.xpath("//*[@id=\"account\"]/div[3]/div/div"));}
+    public String expectedMissingLastname = "Last Name must be between 1 and 32 characters!";
+
+    public WebElement getBlankEmail()  {return driver.findElement(By.xpath("//*[@id=\"account\"]/div[4]/div/div"));}
+    public String expectedMissingEmail = "E-Mail Address does not appear to be valid!";
+
+    public WebElement getBlankTelephone()  {return driver.findElement(By.xpath("//*[@id=\"account\"]/div[5]/div/div"));}
+    public String expectedMissingTelephone = "Telephone must be between 3 and 32 characters!";
+
+    public WebElement getBlankPassword()  {return driver.findElement(By.xpath("//*[@id=\"content\"]/form/fieldset[2]/div[1]/div/div"));}
+    public String expectedMissingPassword = "Password must be between 4 and 20 characters!";
+
+    public WebElement getBlankConfirmPassword()  {return driver.findElement(By.xpath("//*[@id=\"content\"]/form/fieldset[2]/div[2]/div/div"));}
+    public String expectedMissingConfirmPassword = "Password confirmation does not match password!";
 }
