@@ -4,20 +4,18 @@ import utilis.Verify;
 import utilis.VerifyInDriver;
 import data.BaseTest;
 import data.LoginData;
-import org.junit.Test;
-import org.junit.Before;
-import org.openqa.selenium.*;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.AfterEach;
 import pages.LoginPage;
-import java.util.*;
 
 
-public class Login extends BaseTest {
+public class LoginTest extends BaseTest {
     private LoginPage loginPage;
     private VerifyInDriver verify;
 
-    @Before
-    public void setup() {
-        super.setUp();
+    @BeforeEach
+    void setup() {
         loginPage = new LoginPage(driver);
         verify = new VerifyInDriver(driver);
     }

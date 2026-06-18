@@ -1,7 +1,7 @@
 package data;
 
-import org.junit.Before;
-import org.junit.After;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.AfterEach;
 import org.openqa.selenium.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -12,8 +12,8 @@ import java.util.*;
 public class BaseTest {
     public static WebDriver driver;
 
-    @Before
-    public void setUp(){
+    @BeforeEach
+    void setUp(){
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");
         options.addArguments("--no-sandbox");
@@ -23,8 +23,8 @@ public class BaseTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
     }
 
-    @After
-    public void tearDown() {
+    @AfterEach
+    void tearDown() {
         if (driver != null) {
 
             driver.quit();

@@ -11,25 +11,23 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.AfterEach;
 import pages.RegisterPage;
-import java.util.*;
 import java.util.stream.Stream;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import static org.junit.Assert.assertEquals;
 
-public class RegisterInvalidEmails extends BaseTest {
+public class RegisterInvalidEmailsTest extends BaseTest {
 
     private RegisterPage registerPage;
     private VerifyInDriver verify;
 
     @BeforeEach
     void setup() {
-        super.setUp();
         registerPage = new RegisterPage(driver);
         verify = new VerifyInDriver(driver);
     }
 
     @AfterEach
-    public void tearDown() {
+    void tearDown() {
         driver.quit();
     }
 

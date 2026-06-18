@@ -1,25 +1,25 @@
 package testcases;
 
-import org.junit.Test;
-import org.junit.Before;
-import org.junit.After;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.AfterEach;
 import org.openqa.selenium.*;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.*;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
-public class ForgotPassword {
+public class ForgotPasswordTest {
     private WebDriver driver;
     private Map<String, Object> vars;
     private JavascriptExecutor js;
     private WebDriverWait wait;
 
-    @Before
-    public void setUp() {
+    @BeforeEach
+    void setUp() {
         driver = new FirefoxDriver();
         driver.manage().window().setSize(new Dimension(1920, 1080));
         js = (JavascriptExecutor) driver;
@@ -27,8 +27,8 @@ public class ForgotPassword {
         wait = new WebDriverWait(driver, Duration.ofSeconds(15));
     }
 
-    @After
-    public void tearDown() {
+    @AfterEach
+    void tearDown() {
         driver.quit();
     }
 

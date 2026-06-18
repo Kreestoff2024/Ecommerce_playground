@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 
 import java.time.Duration;
 
@@ -26,7 +26,7 @@ public class VerifyInDriver {
         try {
             longWait.until(ExpectedConditions.visibilityOfElementLocated(locator));
         } catch (TimeoutException e) {
-            Assert.fail("Element was not found: " + locator);
+            Assertions.fail("Element was not found: " + locator);
         }
     }
 
@@ -35,9 +35,9 @@ public class VerifyInDriver {
         try {
             WebElement element = longWait.until(ExpectedConditions.visibilityOfElementLocated(locator));
             String actualText = element.getText().trim().replaceAll("\\s+", " ");
-            Assert.assertEquals("Text does not match for: " + locator, expectedText, actualText);
+            Assertions.assertEquals(expectedText, actualText, "Text does not match for: " + locator);
         } catch (TimeoutException e) {
-            Assert.fail("Element not visible for text check: " + locator);
+            Assertions.fail("Element not visible for text check: " + locator);
         }
     }
 
@@ -46,12 +46,9 @@ public class VerifyInDriver {
         try {
             WebElement element = longWait.until(ExpectedConditions.visibilityOfElementLocated(locator));
             String actualText = element.getText().trim().replaceAll("\\s+", " ");
-            Assert.assertTrue(
-                    "Expected text to contain: " + expectedPartialText + " but was: " + actualText,
-                    actualText.contains(expectedPartialText)
-            );
+            Assertions.assertTrue(actualText.contains(expectedPartialText), "Expected text to contain: " + expectedPartialText + " but was: " + actualText);
         } catch (TimeoutException e) {
-            Assert.fail("Element not visible for text contains check: " + locator);
+            Assertions.fail("Element not visible for text contains check: " + locator);
         }
     }
 }
