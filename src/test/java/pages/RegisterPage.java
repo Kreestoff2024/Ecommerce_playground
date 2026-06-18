@@ -66,3 +66,4 @@ public class RegisterPage {
     public WebElement getBlankConfirmPassword()  {return driver.findElement(By.xpath("//*[@id=\"content\"]/form/fieldset[2]/div[2]/div/div"));}
     public String expectedMissingConfirmPassword = "Password confirmation does not match password!";
 }
+

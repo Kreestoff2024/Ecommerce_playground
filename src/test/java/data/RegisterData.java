@@ -2,7 +2,7 @@ package data;
 
 public enum RegisterData {
 
-    Correct("Krystof", "Testor", "qrys@taf.com", "023456789", "1478963", "1478963"),
+    Correct("Krystof", "Testor", "qrys@tuffe.com", "023456789", "1478963", "1478963"),
     Empty(null, null, null, null, null, null);
 
     public final String firstname;

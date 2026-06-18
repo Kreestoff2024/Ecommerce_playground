@@ -5,7 +5,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.AfterEach;
 import org.openqa.selenium.*;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.*;
@@ -19,12 +20,14 @@ public class ForgotPasswordTest {
     private WebDriverWait wait;
 
     @BeforeEach
-    void setUp() {
-        driver = new FirefoxDriver();
+    void setUp(){
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        driver = new ChromeDriver(options);
         driver.manage().window().setSize(new Dimension(1920, 1080));
-        js = (JavascriptExecutor) driver;
-        vars = new HashMap<>();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
     }
 
     @AfterEach
@@ -65,7 +68,7 @@ public class ForgotPasswordTest {
         driver.findElement(By.xpath("//*[@id=\"content\"]/form/div/div[2]/button")).click();
 
         try {
-            WebElement element = driver.findElement(By.xpath("//*[@id=\"account-forgotten\"]/div[1]"));
+            WebElement element = driver.findElement(By.xpath("/html/body/div[1]/div[5]/div[1]/div[1]"));
             assertEquals("Warning: The E-Mail Address was not found in our records, please try again!", element.getText());
         } catch (NoSuchElementException e) {
             fail("Élément introuvable dans la page");
